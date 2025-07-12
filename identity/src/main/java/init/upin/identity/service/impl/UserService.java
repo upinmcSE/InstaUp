@@ -8,9 +8,11 @@ import init.upin.identity.entity.Role;
 import init.upin.identity.entity.User;
 import init.upin.identity.exception.AppException;
 import init.upin.identity.exception.ErrorCode;
+import init.upin.identity.mapper.ProfileMapper;
 import init.upin.identity.mapper.UserMapper;
 import init.upin.identity.repository.RoleRepository;
 import init.upin.identity.repository.UserRepository;
+import init.upin.identity.repository.http.ProfileClient;
 import init.upin.identity.service.IUserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,8 @@ public class UserService implements IUserService {
     RoleRepository roleRepository;
     UserMapper userMapper;
     PasswordEncoder passwordEncoder;
+    ProfileClient profileClient;
+    ProfileMapper profileMapper;
 
     @Override
     @Transactional
@@ -45,8 +49,13 @@ public class UserService implements IUserService {
         roleRepository.findById(PredefinedRole.USER_ROLE).ifPresent(roles::add);
 
         user.setRoles(roles);
+        user = userRepository.save(user);
 
-        return userMapper.toUserResponse(userRepository.save(user));
+        var profileRequest = profileMapper.toProfileCreationRequest(request);
+        profileRequest.setUserId(user.getId());
+        profileClient.createProfile(profileRequest);
+
+        return userMapper.toUserResponse(user);
     }
 
     @Override

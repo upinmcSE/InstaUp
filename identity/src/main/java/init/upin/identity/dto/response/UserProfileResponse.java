@@ -15,4 +15,5 @@ public class UserProfileResponse {
     String userId;
     String email;
     String fullName;
+    String bio;
 }

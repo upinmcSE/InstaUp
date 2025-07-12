@@ -1,4 +1,4 @@
-package init.upin.identity.dto.request;
+package init.upin.profile.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -6,11 +6,12 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProfileCreationRequest {
-    String userId;
+public class UserProfileResponse {
+    String id;
     String fullName;
+    String bio;
 }

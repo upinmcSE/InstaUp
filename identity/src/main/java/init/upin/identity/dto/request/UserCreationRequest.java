@@ -29,9 +29,4 @@ public class UserCreationRequest {
 
     @NotBlank(message = "USERNAME_INVALID")
     String fullName;
-
-    @DobConstraint(min = 10, message = "INVALID_DOB")
-    LocalDate dob;
-
-    String city;
 }

@@ -53,6 +53,7 @@ public class UserService implements IUserService {
 
         var profileRequest = profileMapper.toProfileCreationRequest(request);
         profileRequest.setUserId(user.getId());
+
         profileClient.createProfile(profileRequest);
 
         return userMapper.toUserResponse(user);

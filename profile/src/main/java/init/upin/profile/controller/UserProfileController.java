@@ -1,5 +1,6 @@
 package init.upin.profile.controller;
 
+import init.upin.profile.dto.response.ApiResponse;
 import init.upin.profile.dto.response.UserProfileResponse;
 import init.upin.profile.service.IUserProfileService;
 import lombok.AccessLevel;
@@ -14,7 +15,10 @@ public class UserProfileController {
     IUserProfileService userProfileService;
 
     @GetMapping("/users/{profileId}")
-    UserProfileResponse getProfile(@PathVariable String profileId) {
-        return userProfileService.getProfile(profileId);
+    ApiResponse<UserProfileResponse> getProfile(@PathVariable String profileId) {
+        return ApiResponse.<UserProfileResponse>builder()
+                .message("User profile retrieved successfully")
+                .result(userProfileService.getProfile(profileId))
+                .build();
     }
 }

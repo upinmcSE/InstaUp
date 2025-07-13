@@ -26,7 +26,7 @@ public class UserProfileService implements IUserProfileService {
         UserProfile userProfile = userProfileMapper.toUserProfile(request);
         userProfile = userProfileRepository.save(userProfile);
 
-        return userProfileMapper.toUserProfileReponse(userProfile);
+        return userProfileMapper.toUserProfileResponse(userProfile);
     }
 
     @Override
@@ -39,6 +39,6 @@ public class UserProfileService implements IUserProfileService {
         UserProfile userProfile =
                 userProfileRepository.findById(id).orElseThrow(() -> new RuntimeException("Profile not found"));
 
-        return userProfileMapper.toUserProfileReponse(userProfile);
+        return userProfileMapper.toUserProfileResponse(userProfile);
     }
 }

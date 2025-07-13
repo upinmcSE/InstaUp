@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     IUserService userService;
 
-    @PostMapping
+    @PostMapping("/registration")
     ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request) {
         return ApiResponse.<UserResponse>builder()
                 .result(userService.createUser(request))

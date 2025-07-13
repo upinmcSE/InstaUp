@@ -9,5 +9,5 @@ import org.mapstruct.Mapper;
 public interface UserProfileMapper {
     UserProfile toUserProfile(ProfileCreationRequest request);
 
-    UserProfileResponse toUserProfileReponse(UserProfile entity);
+    UserProfileResponse toUserProfileResponse(UserProfile entity);
 }

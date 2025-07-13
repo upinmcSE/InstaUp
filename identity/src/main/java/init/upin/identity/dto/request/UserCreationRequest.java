@@ -22,7 +22,6 @@ public class UserCreationRequest {
     String username;
 
     @PasswordConstraint(
-            min = 8,
             message = "PASSWORD_INVALID"
     )
     String password;

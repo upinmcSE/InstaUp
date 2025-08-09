@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/InstaUp.iml" filepath="$PROJECT_DIR$/.idea/InstaUp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/identity/identity.iml" filepath="$PROJECT_DIR$/identity/identity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/profile/profile.iml" filepath="$PROJECT_DIR$/profile/profile.iml" />
     </modules>
   </component>
 </project>

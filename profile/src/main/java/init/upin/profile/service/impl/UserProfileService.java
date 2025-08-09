@@ -21,12 +21,21 @@ public class UserProfileService implements IUserProfileService {
     UserProfileRepository userProfileRepository;
     UserProfileMapper userProfileMapper;
 
+//    @Override
+//    public UserProfileResponse createProfile(ProfileCreationRequest request) {
+//        UserProfile userProfile = userProfileMapper.toUserProfile(request);
+//        userProfile = userProfileRepository.save(userProfile);
+//
+//        return userProfileMapper.toUserProfileResponse(userProfile);
+//    }
+
     @Override
-    public UserProfileResponse createProfile(ProfileCreationRequest request) {
+    public init.upin.profile.grpc.gen.UserProfileResponse createProfile(init.upin.profile.grpc.gen.ProfileCreationRequest request) {
         UserProfile userProfile = userProfileMapper.toUserProfile(request);
+        userProfile.setBio("");
         userProfile = userProfileRepository.save(userProfile);
 
-        return userProfileMapper.toUserProfileResponse(userProfile);
+        return userProfileMapper.toUserProfileResponses(userProfile);
     }
 
     @Override

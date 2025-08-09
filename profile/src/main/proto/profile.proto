@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "init.upin.profile.grpc.gen";
+
+service ProfileGrpcService {
+  rpc CreateProfile(ProfileCreationRequest) returns (UserProfileResponse);
+}
+
+message ProfileCreationRequest {
+  string userId = 1;
+  string fullName = 2;
+}
+
+message UserProfileResponse {
+  string id = 1;
+  string fullName = 2;
+  string bio = 3;
+}

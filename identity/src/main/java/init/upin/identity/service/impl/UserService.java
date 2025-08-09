@@ -8,6 +8,7 @@ import init.upin.identity.entity.Role;
 import init.upin.identity.entity.User;
 import init.upin.identity.exception.AppException;
 import init.upin.identity.exception.ErrorCode;
+import init.upin.identity.grpc.ProfileGrpcClient;
 import init.upin.identity.mapper.ProfileMapper;
 import init.upin.identity.mapper.UserMapper;
 import init.upin.identity.repository.RoleRepository;
@@ -36,6 +37,7 @@ public class UserService implements IUserService {
     PasswordEncoder passwordEncoder;
     ProfileClient profileClient;
     ProfileMapper profileMapper;
+    ProfileGrpcClient profileGrpcClient;
 
     @Override
     @Transactional
@@ -51,10 +53,11 @@ public class UserService implements IUserService {
         user.setRoles(roles);
         user = userRepository.save(user);
 
+        // call api internal
         var profileRequest = profileMapper.toProfileCreationRequest(request);
         profileRequest.setUserId(user.getId());
-
-        profileClient.createProfile(profileRequest);
+//        profileClient.createProfile(profileRequest);
+        profileGrpcClient.createProfile(profileRequest);
 
         return userMapper.toUserResponse(user);
     }

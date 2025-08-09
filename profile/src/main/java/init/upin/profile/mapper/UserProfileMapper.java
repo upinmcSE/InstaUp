@@ -8,6 +8,9 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface UserProfileMapper {
     UserProfile toUserProfile(ProfileCreationRequest request);
+    UserProfile toUserProfile(init.upin.profile.grpc.gen.ProfileCreationRequest request);
 
     UserProfileResponse toUserProfileResponse(UserProfile entity);
+
+    init.upin.profile.grpc.gen.UserProfileResponse toUserProfileResponses(UserProfile entity);
 }

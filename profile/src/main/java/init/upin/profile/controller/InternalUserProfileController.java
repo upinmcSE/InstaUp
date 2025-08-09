@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class InternalUserProfileController {
     IUserProfileService userProfileService;
 
-    @PostMapping("/internal/users")
-    UserProfileResponse createProfile(@RequestBody ProfileCreationRequest request) {
-        return userProfileService.createProfile(request);
-    }
+//    @PostMapping("/internal/users")
+//    UserProfileResponse createProfile(@RequestBody ProfileCreationRequest request) {
+//        return userProfileService.createProfile(request);
+//    }
 }

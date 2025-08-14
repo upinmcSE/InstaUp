@@ -10,7 +10,7 @@ func main() {
 		"http://localhost:8761",
 		"notification-service",
 		"localhost",
-		8080,
+		8283,
 		30,
 	)
 	client.Run()
